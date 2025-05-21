@@ -1,3 +1,4 @@
+import { onMount } from "solid-js";
 import { Encryptable, PlainText, tunnel } from "../util/auth";
 import { useNavigate } from "@solidjs/router";
 
@@ -9,6 +10,8 @@ const SIGNUP_ERRORS = [
 ]
 
 let Signup = () => {
+  let turnstile: HTMLElement;
+
   let username: HTMLInputElement;
   let email: HTMLInputElement;
 
@@ -16,6 +19,10 @@ let Signup = () => {
   let passwordConf: HTMLInputElement;
 
   let nav = useNavigate();
+
+  onMount(() => {
+    window.turnstile.render(turnstile!, { sitekey: '0x4AAAAAABDsYHmEqdJLrO8i' })
+  });
 
   let signup = async () => {
     if(!username! || !username!.value)return console.log('u');
@@ -44,7 +51,7 @@ let Signup = () => {
 
   return (
     <>
-      <div class="app-container" style={{ height: '450px' }}>
+      <div class="app-container" style={{ height: '540px' }}>
         <h1>Phaze ID</h1><br />
         <h3>Sign Up</h3><br />
 
@@ -69,6 +76,8 @@ let Signup = () => {
           <input class="input-text" type="password" placeholder="Confirm Password..." ref={passwordConf!}></input>
           <div class="input-underline"></div>
         </div><br /><br />
+
+        <div ref={( el ) => turnstile = el}></div><br />
 
         <div class="button" onClick={signup}>
           Sign Up

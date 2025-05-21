@@ -142,12 +142,13 @@ h1, h2, h3, h4, h5, h6, p{
   width: 150px;
   height: 150px;
   margin: auto;
-  background: #fff3;
+  background: #fff2;
   border-radius: 5px;
   box-shadow: #0005 0 0 10px;
   backdrop-filter: blur(3px);
   background-size: cover !important;
   background-position: center !important;
+  animation: linear infinite 1s image-loading;
 }
 
 .profile-pic-edit{
@@ -170,7 +171,7 @@ h1, h2, h3, h4, h5, h6, p{
   width: 200px;
   height: 40px;
   margin: auto;
-  background: #fff3;
+  background: #fff2;
   border-radius: 5px;
   margin-top: -10px;
   box-shadow: #0005 0 0 10px;
@@ -180,4 +181,90 @@ h1, h2, h3, h4, h5, h6, p{
   display: flex;
   font-size: 20px;
   color: #fff;
+}
+
+.patreon-button{
+  width: 100%;
+  height: 40px;
+  margin-top: 50px;
+  background: linear-gradient(-50deg, #000, #222, #000);
+  border: #ffa600 2px solid;
+  border-radius: 5px;
+  box-shadow: #000 0 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-size: 15px;
+}
+
+.link{
+  color: #00ccff;
+  cursor: pointer;
+}
+
+.sessions-list{
+  height: 363px;
+  overflow: auto;
+  mask-image: linear-gradient(to bottom, #0000 0%, #000 10%, #000 90%, #0000 100%);
+}
+
+.session{
+  width: 100%;
+  padding: 10px;
+  background: #0005;
+  margin-top: 5px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.session-time{
+  font-size: 15px;
+  font-weight: 100;
+  color: #999;
+}
+
+.mfa-qr{
+  width: 200px;
+  height: 200px;
+  display: inline-flex;
+  text-align: center;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  animation: linear infinite 1s image-loading;
+  box-shadow: inset #000 0 0 10px;
+}
+
+.mfa-qr img{
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+  display: none;
+}
+
+@keyframes image-loading {
+  0%   { background: linear-gradient(to bottom right, #0000 -100%, #fff2 0%, #0000 100%); }
+  5%   { background: linear-gradient(to bottom right, #0000 -90%, #fff2 10%, #0000 110%); }
+  10%  { background: linear-gradient(to bottom right, #0000 -80%, #fff2 20%, #0000 120%); }
+  15%  { background: linear-gradient(to bottom right, #0000 -70%, #fff2 30%, #0000 130%); }
+  20%  { background: linear-gradient(to bottom right, #0000 -60%, #fff2 40%, #0000 140%); }
+  25%  { background: linear-gradient(to bottom right, #0000 -50%, #fff2 50%, #0000 150%); }
+  30%  { background: linear-gradient(to bottom right, #0000 -40%, #fff2 60%, #0000 160%); }
+  35%  { background: linear-gradient(to bottom right, #0000 -30%, #fff2 70%, #0000 170%); }
+  40%  { background: linear-gradient(to bottom right, #0000 -20%, #fff2 80%, #0000 180%); }
+  45%  { background: linear-gradient(to bottom right, #0000 -10%, #fff2 90%, #0000 190%); }
+  50%  { background: linear-gradient(to bottom right, #0000 0%, #fff2 100%, #0000 200%); }
+
+  55%  { background: linear-gradient(to bottom right, #fff2 -90%, #0000 10%, #fff2 110%); }
+  60%  { background: linear-gradient(to bottom right, #fff2 -80%, #0000 20%, #fff2 120%); }
+  65%  { background: linear-gradient(to bottom right, #fff2 -70%, #0000 30%, #fff2 130%); }
+  70%  { background: linear-gradient(to bottom right, #fff2 -60%, #0000 40%, #fff2 140%); }
+  75%  { background: linear-gradient(to bottom right, #fff2 -50%, #0000 50%, #fff2 150%); }
+  80%  { background: linear-gradient(to bottom right, #fff2 -40%, #0000 60%, #fff2 160%); }
+  85%  { background: linear-gradient(to bottom right, #fff2 -30%, #0000 70%, #fff2 170%); }
+  90%  { background: linear-gradient(to bottom right, #fff2 -20%, #0000 80%, #fff2 180%); }
+  95%  { background: linear-gradient(to bottom right, #fff2 -10%, #0000 90%, #fff2 190%); }
+  100% { background: linear-gradient(to bottom right, #fff2 -0%, #0000 100%, #fff2 200%); }
 }

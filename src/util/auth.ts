@@ -64,10 +64,10 @@ export let tunnel = ( text: PlainText[], cb: ( res: string ) => void ) => {
     ws.onmessage = async ( dat ) => {
       ws.onmessage = async ( dat ) => {
         let enc = await decrypt(str2ab(window.atob(dat.data)), keyPair.privateKey);
-        cb(enc);
-
         allowClose = true;
+
         ws.close();
+        cb(enc);
       }
 
       let enc = await decrypt(str2ab(window.atob(dat.data)), keyPair.privateKey);

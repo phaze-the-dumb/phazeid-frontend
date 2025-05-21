@@ -11,14 +11,60 @@ let Profile = () => {
 
   let fileUpload: HTMLInputElement;
 
-  let profilePicUpload = () => {
+  let originalPfpUrl = '';
 
+  let profilePicUpload = () => {
+    let reader = new FileReader();
+
+    reader.onload = () => {
+      let canvas = <canvas width={300} height={300}></canvas> as HTMLCanvasElement;
+
+      let img = new Image();
+      img.src = reader.result?.toString()!;
+
+      img.onload = () => {
+        let scaledByHeight = img.height > img.width;
+        let width, height;
+
+        if(scaledByHeight){
+          width = 300;
+          height = ( 300 / img.width ) * img.height;
+        } else{
+          height = 300;
+          width = ( 300 / img.height ) * img.width;
+        }
+
+        let x = 150 - width / 2,
+            y = 150 - height / 2;
+
+        canvas!.getContext('2d')!.drawImage(img, x, y, width, height);
+
+        let formdata = new FormData();
+        canvas!.toBlob(async ( blob ) => {
+          formdata.append('img', blob!);
+          
+          let dat = await fetch('http://localhost/api/v1/account/change_avatar', {
+            credentials: 'include',
+            method: 'PUT',
+            body: formdata
+          });
+
+          if(dat.status !== 200){
+            profilePic!.style.background = 'url(\'' + originalPfpUrl + '\')';
+            return window.setErrorText('Failed to upload avatar: ' + await dat.text());
+          }
+
+          window.setErrorText("");
+        })
+        
+        profilePic!.style.background = 'url(\'' + canvas!.toDataURL('image/png') + '\')';
+      }
+    }
+
+    reader.readAsDataURL(fileUpload.files![0]);
   }
 
   onMount(async () => {
-    let id = window.location.hash.slice(1);
-    if(!id)return nav('/login');
-
     let dat = await fetch('http://localhost/api/v1/profile', { credentials: 'include' });
     if(dat.status !== 200)return nav('/login');
 
@@ -26,7 +72,18 @@ let Profile = () => {
     if(json.endpoint)return nav(json.endpoint);
 
     username!.innerText = json.username;
-    profilePic!.style.background = 'url(\'https://cdn.phaz.uk/id/avatars/' + json.id + '/' + json.avatar + '.png\')';
+
+    if([ "default" ].includes(json.avatar)){
+      originalPfpUrl = 'https://cdn.phaz.uk/id/avatars/' + json.avatar + '.png';
+
+      profilePic!.style.background = 'url(\'https://cdn.phaz.uk/id/avatars/' + json.avatar + '.png\')';
+      profilePic!.style.animation = 'none';
+    } else{
+      originalPfpUrl = 'https://cdn.phaz.uk/id/avatars/' + json.id + '/' + json.avatar + '.png';
+
+      profilePic!.style.background = 'url(\'https://cdn.phaz.uk/id/avatars/' + json.id + '/' + json.avatar + '.png\')';
+      profilePic!.style.animation = 'none';
+    }
   })
 
   return (
