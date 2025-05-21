@@ -7,6 +7,8 @@ declare global{
 /* @refresh reload */
 import { render } from 'solid-js/web'
 import { Route, Router } from "@solidjs/router";
+
+// @ts-ignore
 import { TurnstileObject } from 'turnstile-types';
 
 import './index.css'
