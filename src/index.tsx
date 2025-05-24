@@ -21,6 +21,7 @@ const root = document.getElementById('root');
 let Login = lazy(() => import('./Pages/Login.tsx'));
 let Signup = lazy(() => import('./Pages/Signup.tsx'));
 let ResetPassword = lazy(() => import('./Pages/ResetPassword.tsx'));
+let Reset = lazy(() => import('./Pages/Reset.tsx'));
 let VerifyEmail = lazy(() => import('./Pages/VerifyEmail.tsx'));
 let VerifyMFA = lazy(() => import('./Pages/VerifyMFA.tsx'));
 let Verify = lazy(() => import('./Pages/Verify.tsx'));
@@ -39,6 +40,7 @@ render(() => <Router root={App}>
   <Route path="/login" component={Login} />
   <Route path="/signup" component={Signup} />
   <Route path="/reset-password" component={ResetPassword} />
+  <Route path="/reset" component={Reset} />
   <Route path="/verify-email" component={VerifyEmail} />
   <Route path="/verify-mfa" component={VerifyMFA} />
   <Route path="/verify" component={Verify} />

@@ -12,6 +12,8 @@ let AccountMFA = () => {
   let mfaSlide1!: HTMLDivElement;
   let mfaSlide2!: HTMLDivElement;
 
+  let mfaLoading!: HTMLDivElement;
+
   let appContainer!: HTMLDivElement;
 
   onMount(async () => {
@@ -33,6 +35,10 @@ let AccountMFA = () => {
   })
 
   let submit = async ( code: string ) => {
+    mfaSlide1.style.display = 'none';
+    mfaLoading.style.display = 'block';
+    mfaSlide2.style.display = 'none';
+
     let dat = await fetch('http://localhost/api/v1/account/confirm_mfa', { 
       credentials: 'include', 
       body: JSON.stringify({ code }), 
@@ -43,10 +49,31 @@ let AccountMFA = () => {
     });
     if(dat.status !== 200)return window.setErrorText('Cannot confirm 2FA code: ' + await dat.text());
 
+    let json = await dat.json();
+
     mfaSlide1.style.display = 'none';
+    mfaLoading.style.display = 'none';
     mfaSlide2.style.display = 'block';
 
-    appContainer.style.height = '225px';
+    appContainer.style.height = '430px';
+    appContainer.appendChild(<div>
+      <br /><br />
+      <p>These are your MFA backup codes, these will never be shown again. Write them down in a safe place incase you lose your account.</p>
+      <div class="mfa-codes">
+        <div style="display: flex;">
+          <div style="width: 50%;">
+            { json.backup_codes[0] }<br />
+            { json.backup_codes[1] }<br />
+            { json.backup_codes[2] }
+          </div>
+          <div style="width: 50%;">
+            { json.backup_codes[3] }<br />
+            { json.backup_codes[4] }<br />
+            { json.backup_codes[5] }
+          </div>
+        </div>
+      </div>
+    </div> as Node);
   }
 
   let disable = async () => {
@@ -73,6 +100,10 @@ let AccountMFA = () => {
 
           <p>Enter the code displayed in your authenticator app here.</p><br />
           <CodeInput onChange={submit} />
+        </div>
+
+        <div ref={mfaLoading} style={{ display: 'none' }}>
+          <p>Loading...</p>
         </div>
         
         <div ref={mfaSlide2} style={{ display: 'none' }}>

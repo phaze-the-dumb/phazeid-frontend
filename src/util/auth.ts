@@ -111,7 +111,7 @@ export let tunnel = ( text: PlainText[], cb: ( res: string ) => void ) => {
     ws.send(keyDat);
   }
 
-  ws.onclose = () => {
+  ws.onerror = () => {
     if(!allowClose){
       console.error('Failed to authenticate.');
       window.setErrorText("Failed to authenticate, Please reload page to try again.");

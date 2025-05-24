@@ -13,7 +13,7 @@ let Profile = () => {
             <div>
               <h4>Security</h4>
             
-              <div class="button" style="width: 100%;" onClick={() => nav('/account/2fa')}>Enable 2FA</div><br />
+              <div class="button" style="width: 100%;" onClick={() => nav('/account/2fa')}>2FA Settings</div><br />
               <div class="button" style="width: 100%; margin-top: 5px;" onClick={() => nav('/account/devices')}>Authenticated Devices</div><br /><br />
             
               <h4>Profile</h4>

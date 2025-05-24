@@ -244,6 +244,14 @@ h1, h2, h3, h4, h5, h6, p{
   display: none;
 }
 
+.mfa-codes{
+  background: #285075;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  color: #999;
+}
+
 @keyframes image-loading {
   0%   { background: linear-gradient(to bottom right, #0000 -100%, #fff2 0%, #0000 100%); }
   5%   { background: linear-gradient(to bottom right, #0000 -90%, #fff2 10%, #0000 110%); }
