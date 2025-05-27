@@ -41,6 +41,10 @@ let VerifyMFA = () => {
 
         <br />
         <p>Please enter the code from your authenticator app.</p>
+
+        <div class="button-text" onClick={() => nav('/verify-backup' + window.location.hash)} style={{ color: '#aaa' }}>
+          Use a backup code.
+        </div>
       </div>
     </>
   )

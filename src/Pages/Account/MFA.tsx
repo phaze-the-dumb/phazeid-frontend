@@ -55,10 +55,10 @@ let AccountMFA = () => {
     mfaLoading.style.display = 'none';
     mfaSlide2.style.display = 'block';
 
-    appContainer.style.height = '430px';
+    appContainer.style.height = '460px';
     appContainer.appendChild(<div>
-      <br /><br />
-      <p>These are your MFA backup codes, these will never be shown again. Write them down in a safe place incase you lose your account.</p>
+      <br />
+      <p>These are your MFA backup codes, these will never be shown again. Write them down in a safe place incase you lose your account.<br /><br />Once you use a code it will become invalid.</p>
       <div class="mfa-codes">
         <div style="display: flex;">
           <div style="width: 50%;">

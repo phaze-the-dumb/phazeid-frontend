@@ -24,6 +24,7 @@ let ResetPassword = lazy(() => import('./Pages/ResetPassword.tsx'));
 let Reset = lazy(() => import('./Pages/Reset.tsx'));
 let VerifyEmail = lazy(() => import('./Pages/VerifyEmail.tsx'));
 let VerifyMFA = lazy(() => import('./Pages/VerifyMFA.tsx'));
+let VerifyBackup = lazy(() => import('./Pages/VerifyBackup.tsx'));
 let Verify = lazy(() => import('./Pages/Verify.tsx'));
 let Profile = lazy(() => import('./Pages/Profile.tsx'));
 let Settings = lazy(() => import('./Pages/Settings.tsx'));
@@ -43,6 +44,7 @@ render(() => <Router root={App}>
   <Route path="/reset" component={Reset} />
   <Route path="/verify-email" component={VerifyEmail} />
   <Route path="/verify-mfa" component={VerifyMFA} />
+  <Route path="/verify-backup" component={VerifyBackup} />
   <Route path="/verify" component={Verify} />
   <Route path="/profile" component={Profile} />
   <Route path="/settings" component={Settings} />

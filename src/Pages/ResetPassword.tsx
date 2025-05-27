@@ -1,14 +1,10 @@
 import { onMount } from "solid-js";
 import { Encryptable, PlainText, tunnel } from "../util/auth";
-import { useNavigate } from "@solidjs/router";
-
 const RESET_ERRORS = [
   "Invalid Email"
 ]
 
 let ResetPassword = () => {
-  let nav = useNavigate();
-
   let turnstile: HTMLElement;
 
   let email!: HTMLInputElement;
