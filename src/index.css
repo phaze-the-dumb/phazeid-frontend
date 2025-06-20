@@ -112,6 +112,7 @@ h1, h2, h3, h4, h5, h6, p{
   color: white;
   text-align: center;
   transition: 0.1s;
+  position: relative;
 }
 
 .error-text{
@@ -250,6 +251,15 @@ h1, h2, h3, h4, h5, h6, p{
   border-radius: 5px;
   margin-top: 10px;
   color: #999;
+}
+
+.oauth-error{
+  margin-top: 25px;
+}
+
+.oauth-error i{
+  font-size: 75px;
+  margin-bottom: 10px;
 }
 
 @keyframes image-loading {

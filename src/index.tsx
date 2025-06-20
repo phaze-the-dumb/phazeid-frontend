@@ -28,6 +28,8 @@ let VerifyBackup = lazy(() => import('./Pages/VerifyBackup.tsx'));
 let Verify = lazy(() => import('./Pages/Verify.tsx'));
 let Profile = lazy(() => import('./Pages/Profile.tsx'));
 let Settings = lazy(() => import('./Pages/Settings.tsx'));
+let OAuth = lazy(() => import('./Pages/OAuth.tsx'));
+let RestoreAccount = lazy(() => import('./Pages/RestoreAccount.tsx'));
 
 let AccountLogout = lazy(() => import('./Pages/Account/Logout.tsx'));
 let AccountChangeEmail = lazy(() => import('./Pages/Account/ChangeEmail.tsx'));
@@ -35,7 +37,9 @@ let AccountVerifyEmail = lazy(() => import('./Pages/Account/VerifyEmail.tsx'));
 let AccountChangeUsername = lazy(() => import('./Pages/Account/ChangeUsername.tsx'));
 let AccountChangePassword = lazy(() => import('./Pages/Account/ChangePassword.tsx'));
 let AccountDevices = lazy(() => import('./Pages/Account/Devices.tsx'));
+let AccountAuthorizedApplications = lazy(() => import('./Pages/Account/AuthorizedApplications.tsx'));
 let AccountMFA = lazy(() => import('./Pages/Account/MFA.tsx'));
+let AccountDelete = lazy(() => import('./Pages/Account/Delete.tsx'));
 
 render(() => <Router root={App}>
   <Route path="/login" component={Login} />
@@ -48,6 +52,8 @@ render(() => <Router root={App}>
   <Route path="/verify" component={Verify} />
   <Route path="/profile" component={Profile} />
   <Route path="/settings" component={Settings} />
+  <Route path="/oauth" component={OAuth} />
+  <Route path="/restore-account" component={RestoreAccount} />
 
   <Route path="/account/logout" component={AccountLogout} />
   <Route path="/account/email" component={AccountChangeEmail} />
@@ -55,5 +61,7 @@ render(() => <Router root={App}>
   <Route path="/account/username" component={AccountChangeUsername} />
   <Route path="/account/password" component={AccountChangePassword} />
   <Route path="/account/devices" component={AccountDevices} />
+  <Route path="/account/devices/oauth" component={AccountAuthorizedApplications} />
   <Route path="/account/2fa" component={AccountMFA} />
+  <Route path="/account/delete" component={AccountDelete} />
 </Router>, root!)

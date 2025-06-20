@@ -44,7 +44,7 @@ let Signup = () => {
         window.setErrorText(SIGNUP_ERRORS[parseInt(res[1])])
       } else if(res[0] === "0"){
         // No Error
-        nav('/verify-email#' + res.slice(1));
+        nav('/verify-email?redirect_to=/profile#' + res.slice(1));
       }
     });
   } 

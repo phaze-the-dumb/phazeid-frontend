@@ -15,7 +15,7 @@ let AccountDevices = () => {
   }
 
   onMount(async () => {
-    let dat = await fetch('http://localhost/api/v1/account/sessions', { credentials: 'include' });
+    let dat = await fetch('http://localhost:8080/api/v1/account/sessions', { credentials: 'include' });
     if(dat.status !== 200)return nav('/login');
 
     let json = await dat.json();
@@ -39,7 +39,7 @@ let AccountDevices = () => {
 
           <Show when={!item.is_this}>
             <br /><div class="button-danger" style={{ width: '100%' }} onClick={async () => {
-              let dat = await fetch('http://localhost/api/v1/account/logout?session=' + item._id, { credentials: 'include' });
+              let dat = await fetch('http://localhost:8080/api/v1/account/logout?session=' + item._id, { credentials: 'include' });
               if(dat.status !== 200)return window.setErrorText('Failed to revoke session.');
 
               document.querySelector('#session-' + item._id)?.remove();
@@ -53,13 +53,14 @@ let AccountDevices = () => {
 
   return (
     <>
-      <div class="app-container" style={{ height: '450px' }}>
+      <div class="app-container" style={{ height: '473px' }}>
         <h1>Phaze ID</h1>
         <h3>Devices</h3>
 
         <div style={{ height: '310px', overflow: 'auto' }} ref={sessionsList}>Loading...</div>
-        
-        <div class="button" style="width: 100%;" onClick={() => nav('/settings')}>Back</div>
+
+        <div class="button" style={{ width: '100%' }} onClick={() => nav('/account/devices/oauth')}>Authorized Apps</div>
+        <div class="button" style={{ width: '100%', "margin-top": '5px' }} onClick={() => nav('/settings')}>Back</div>
       </div>
     </>
   )

@@ -1,9 +1,10 @@
 import { onMount } from "solid-js";
 import CodeInput from "../Components/CodeInput";
-import { useNavigate } from "@solidjs/router";
+import { useLocation, useNavigate } from "@solidjs/router";
 
 let VerifyMFA = () => {
   let nav = useNavigate();
+  let loc = useLocation();
 
   onMount(() => {
     let token = window.location.hash.slice(1);
@@ -13,7 +14,7 @@ let VerifyMFA = () => {
   let submit = async ( code: string ) => {
     let token = window.location.hash.slice(1);
     if(token){
-      let dat = await fetch('http://localhost/api/v1/verification/verify_mfa', {
+      let dat = await fetch('http://localhost:8080/api/v1/verification/verify_mfa', {
         method: 'POST',
         body: JSON.stringify({ code, token }),
         headers: {
@@ -26,8 +27,10 @@ let VerifyMFA = () => {
         return window.setErrorText(await dat.text());
 
       let json = await dat.json();
-      nav(json.endpoint);
       window.setErrorText("");
+
+      if(json.endpoint)nav(json.endpoint);
+      else nav(loc.query['redirect_to'] as string)
     }
   }
 

@@ -5,7 +5,7 @@ let Profile = () => {
 
   return (
     <>
-      <div class="app-container" style={{ height: '470px' }}>
+      <div class="app-container" style={{ height: '515px' }}>
         <div>
           <h2>Settings</h2><br />
         
@@ -22,7 +22,8 @@ let Profile = () => {
               <div class="button" style="width: 100%; margin-top: 5px;" onClick={() => nav('/account/username')}>Change Username</div><br />
               <div class="button" style="width: 100%; margin-top: 5px;" onClick={() => nav('/account/password')}>Change Password</div><br /><br /><br />
 
-              <div class="button-danger" style="width: 100%;" onClick={() => nav('/account/logout')}>Logout</div><br />
+              <div class="button-danger" style="width: 100%;" onClick={() => nav('/account/delete')}>Delete Account</div><br />
+              <div class="button-danger" style="width: 100%; margin-top: 5px;" onClick={() => nav('/account/logout')}>Logout</div><br />
             </div>
           </div>
           <br />

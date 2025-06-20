@@ -1,8 +1,9 @@
 import { onMount } from "solid-js";
-import { useNavigate } from "@solidjs/router";
+import { useLocation, useNavigate } from "@solidjs/router";
 
 let Verify = () => {
   let nav = useNavigate();
+  let loc = useLocation();
 
   onMount(() => {
     let token = window.location.hash.slice(1);
@@ -12,7 +13,7 @@ let Verify = () => {
   let submit = async () => {
     let token = window.location.hash.slice(1);
     if(token){
-      let dat = await fetch('http://localhost/api/v1/verification/verify', {
+      let dat = await fetch('http://localhost:8080/api/v1/verification/verify', {
         method: 'POST',
         body: JSON.stringify({ token }),
         headers: {
@@ -25,9 +26,10 @@ let Verify = () => {
         return window.setErrorText(await dat.text());
 
       let json = await dat.json();
-      nav(json.endpoint);
-
       window.setErrorText("");
+
+      if(json.endpoint)nav(json.endpoint);
+      else nav(loc.query['redirect_to'] as string)
     }
   }
 

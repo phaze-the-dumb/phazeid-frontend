@@ -53,7 +53,7 @@ export let tunnel = ( text: PlainText[], cb: ( res: string ) => void ) => {
 
   window.turnstile.reset();
 
-  let ws = new WebSocket('ws://localhost/api/v1/auth/tunnel');
+  let ws = new WebSocket('ws://localhost:8080/api/v1/auth/tunnel');
   ws.onopen = () => {
     window.setErrorText("");
 

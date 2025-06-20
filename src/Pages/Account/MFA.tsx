@@ -17,7 +17,7 @@ let AccountMFA = () => {
   let appContainer!: HTMLDivElement;
 
   onMount(async () => {
-    let dat = await fetch('http://localhost/api/v1/account/enable_mfa', { credentials: 'include' });
+    let dat = await fetch('http://localhost:8080/api/v1/account/enable_mfa', { credentials: 'include' });
     if(dat.status !== 200)return window.setErrorText('Cannot load 2FA code: ' + await dat.text());
 
     let json = await dat.json();
@@ -39,7 +39,7 @@ let AccountMFA = () => {
     mfaLoading.style.display = 'block';
     mfaSlide2.style.display = 'none';
 
-    let dat = await fetch('http://localhost/api/v1/account/confirm_mfa', { 
+    let dat = await fetch('http://localhost:8080/api/v1/account/confirm_mfa', { 
       credentials: 'include', 
       body: JSON.stringify({ code }), 
       method: 'PUT',
@@ -47,7 +47,13 @@ let AccountMFA = () => {
         'Content-Type': 'application/json'
       }
     });
-    if(dat.status !== 200)return window.setErrorText('Cannot confirm 2FA code: ' + await dat.text());
+    if(dat.status !== 200){
+      mfaSlide1.style.display = 'block';
+      mfaLoading.style.display = 'none';
+      mfaSlide2.style.display = 'none';
+
+      return window.setErrorText('Cannot confirm 2FA code: ' + await dat.text());
+    }
 
     let json = await dat.json();
 
@@ -77,7 +83,7 @@ let AccountMFA = () => {
   }
 
   let disable = async () => {
-    let dat = await fetch('http://localhost/api/v1/account/disable_mfa', { credentials: 'include', method: 'DELETE' });
+    let dat = await fetch('http://localhost:8080/api/v1/account/disable_mfa', { credentials: 'include', method: 'DELETE' });
     if(dat.status !== 200)return window.setErrorText('Cannot disable 2FA : ' + await dat.text());
     
     mfaSlide1.style.display = 'block';

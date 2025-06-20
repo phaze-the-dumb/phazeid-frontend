@@ -43,7 +43,7 @@ let Profile = () => {
         canvas!.toBlob(async ( blob ) => {
           formdata.append('img', blob!);
           
-          let dat = await fetch('http://localhost/api/v1/account/change_avatar', {
+          let dat = await fetch('http://localhost:8080/api/v1/account/change_avatar', {
             credentials: 'include',
             method: 'PUT',
             body: formdata
@@ -65,7 +65,7 @@ let Profile = () => {
   }
 
   onMount(async () => {
-    let dat = await fetch('http://localhost/api/v1/profile', { credentials: 'include' });
+    let dat = await fetch('http://localhost:8080/api/v1/profile', { credentials: 'include' });
     if(dat.status !== 200)return nav('/login');
 
     let json = await dat.json();

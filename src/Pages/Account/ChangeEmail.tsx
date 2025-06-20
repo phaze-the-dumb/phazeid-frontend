@@ -7,7 +7,7 @@ let AccountChangeEmail = () => {
   let nav = useNavigate();
 
   onMount(async () => {
-    let dat = await fetch('http://localhost/api/v1/profile', { credentials: 'include' });
+    let dat = await fetch('http://localhost:8080/api/v1/profile', { credentials: 'include' });
     if(dat.status !== 200)return nav('/login');
 
     let json = await dat.json();
@@ -18,7 +18,7 @@ let AccountChangeEmail = () => {
 
   let value = '';
   let submit = async () => {
-    let dat = await fetch('http://localhost/api/v1/account/change_email', { 
+    let dat = await fetch('http://localhost:8080/api/v1/account/change_email', { 
       credentials: 'include',
       method: 'PUT',
       headers: { 'content-type': 'application/json' },
