@@ -38,14 +38,14 @@ let AccountAuthorizedApplications = () => {
               </Show>
             </p>
 
-            <Show when={!item.is_this}>
-              <br /><div class="button-danger" style={{ width: '100%' }} onClick={async () => {
-                let dat = await fetch('http://localhost:8080/api/v1/account/logout_oauth?session=' + item._id, { credentials: 'include' });
-                if(dat.status !== 200)return window.setErrorText('Failed to revoke session.');
+            <br /><div class="button-danger" style={{ width: '100%' }} onClick={async () => {
+              let dat = await fetch('http://localhost:8080/api/v1/account/logout_oauth?session=' + item._id, { credentials: 'include' });
+              if(dat.status !== 200)return window.setErrorText('Failed to revoke session.');
 
-                document.querySelector('#session-' + item._id)?.remove();
-              }}>Remove Device</div>
-            </Show>
+              document.querySelector('#session-' + item._id)?.remove();
+            }}>Revoke Session</div>
+
+            <br /><div class="button-danger" style={{ width: '100%', "margin-top": '5px' }} onClick={() => nav('/account/deauthorize?id=' + item._id + '&app_name=' + item.app_name)}>Remove App</div>
           </div>}
         </For>
         <br />

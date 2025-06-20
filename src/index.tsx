@@ -40,8 +40,11 @@ let AccountDevices = lazy(() => import('./Pages/Account/Devices.tsx'));
 let AccountAuthorizedApplications = lazy(() => import('./Pages/Account/AuthorizedApplications.tsx'));
 let AccountMFA = lazy(() => import('./Pages/Account/MFA.tsx'));
 let AccountDelete = lazy(() => import('./Pages/Account/Delete.tsx'));
+let AccountDeauthorize = lazy(() => import('./Pages/Account/Deauthorize.tsx'));
 
 render(() => <Router root={App}>
+  <Route path="/" component={Login} />
+
   <Route path="/login" component={Login} />
   <Route path="/signup" component={Signup} />
   <Route path="/reset-password" component={ResetPassword} />
@@ -64,4 +67,5 @@ render(() => <Router root={App}>
   <Route path="/account/devices/oauth" component={AccountAuthorizedApplications} />
   <Route path="/account/2fa" component={AccountMFA} />
   <Route path="/account/delete" component={AccountDelete} />
+  <Route path="/account/deauthorize" component={AccountDeauthorize} />
 </Router>, root!)
