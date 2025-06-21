@@ -41,6 +41,7 @@ let AccountAuthorizedApplications = lazy(() => import('./Pages/Account/Authorize
 let AccountMFA = lazy(() => import('./Pages/Account/MFA.tsx'));
 let AccountDelete = lazy(() => import('./Pages/Account/Delete.tsx'));
 let AccountDeauthorize = lazy(() => import('./Pages/Account/Deauthorize.tsx'));
+let AccountPatreon = lazy(() => import('./Pages/Account/Patreon.tsx'));
 
 render(() => <Router root={App}>
   <Route path="/" component={Login} />
@@ -68,4 +69,5 @@ render(() => <Router root={App}>
   <Route path="/account/2fa" component={AccountMFA} />
   <Route path="/account/delete" component={AccountDelete} />
   <Route path="/account/deauthorize" component={AccountDeauthorize} />
+  <Route path="/account/patreon" component={AccountPatreon} />
 </Router>, root!)

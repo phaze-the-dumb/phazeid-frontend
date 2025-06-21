@@ -1,7 +1,20 @@
+.slide-fade-enter-active,
+.slide-fade-exit-active {
+  transition: opacity 0.3s, transform 0.3s;
+}
+.slide-fade-enter,
+.slide-fade-exit-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
+.slide-fade-enter {
+  transform: translateX(-10px);
+}
+
 @font-face {
   font-family: Rubik;
   src: url('https://cdn.phazed.xyz/fonts/rubik/Rubik-VariableFont_wght.ttf');
-} 
+}
 
 * {
   box-sizing: border-box;
