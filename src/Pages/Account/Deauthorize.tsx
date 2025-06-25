@@ -5,7 +5,7 @@ let AccountDelete = () => {
   let loc = useLocation();
 
   let deleteAccount = async () => {
-    let dat = await fetch('http://localhost:8080/api/v1/account/remove_oauth_app?session=' + loc.query['id'], { credentials: 'include' });
+    let dat = await fetch('https://id.api.phaz.uk/api/v1/account/remove_oauth_app?session=' + loc.query['id'], { credentials: 'include' });
     if(dat.status !== 200)return window.setErrorText(await dat.text());
 
     let json = await dat.json();

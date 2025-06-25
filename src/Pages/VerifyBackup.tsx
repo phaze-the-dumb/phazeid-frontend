@@ -21,7 +21,7 @@ let Verify = () => {
       loadingContainer.style.display = 'block';
       codeContainer.style.display = 'none';
 
-      let dat = await fetch('http://localhost:8080/api/v1/verification/verify_backup', {
+      let dat = await fetch('https://id.api.phaz.uk/api/v1/verification/verify_backup', {
         method: 'POST',
         body: JSON.stringify({ token, code: code.value }),
         headers: {

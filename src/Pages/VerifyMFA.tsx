@@ -14,7 +14,7 @@ let VerifyMFA = () => {
   let submit = async ( code: string ) => {
     let token = window.location.hash.slice(1);
     if(token){
-      let dat = await fetch('http://localhost:8080/api/v1/verification/verify_mfa', {
+      let dat = await fetch('https://id.api.phaz.uk/api/v1/verification/verify_mfa', {
         method: 'POST',
         body: JSON.stringify({ code, token }),
         headers: {

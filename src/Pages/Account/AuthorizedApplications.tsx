@@ -15,7 +15,7 @@ let AccountAuthorizedApplications = () => {
   }
 
   onMount(async () => {
-    let dat = await fetch('http://localhost:8080/api/v1/account/sessions_oauth', { credentials: 'include' });
+    let dat = await fetch('https://id.api.phaz.uk/api/v1/account/sessions_oauth', { credentials: 'include' });
     if(dat.status !== 200)return nav('/login');
 
     let json = await dat.json();
@@ -39,7 +39,7 @@ let AccountAuthorizedApplications = () => {
             </p>
 
             <br /><div class="button-danger" style={{ width: '100%' }} onClick={async () => {
-              let dat = await fetch('http://localhost:8080/api/v1/account/logout_oauth?session=' + item._id, { credentials: 'include' });
+              let dat = await fetch('https://id.api.phaz.uk/api/v1/account/logout_oauth?session=' + item._id, { credentials: 'include' });
               if(dat.status !== 200)return window.setErrorText('Failed to revoke session.');
 
               document.querySelector('#session-' + item._id)?.remove();

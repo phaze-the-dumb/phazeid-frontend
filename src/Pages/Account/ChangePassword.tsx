@@ -19,7 +19,7 @@ let AccountChangePassword = () => {
   let nav = useNavigate();
 
   onMount(async () => {
-    let dat = await fetch('http://localhost:8080/api/v1/profile', { credentials: 'include' });
+    let dat = await fetch('https://id.api.phaz.uk/api/v1/profile', { credentials: 'include' });
     if(dat.status !== 200)return nav('/login');
 
     let json = await dat.json();

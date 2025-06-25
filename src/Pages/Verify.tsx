@@ -13,7 +13,7 @@ let Verify = () => {
   let submit = async () => {
     let token = window.location.hash.slice(1);
     if(token){
-      let dat = await fetch('http://localhost:8080/api/v1/verification/verify', {
+      let dat = await fetch('https://id.api.phaz.uk/api/v1/verification/verify', {
         method: 'POST',
         body: JSON.stringify({ token }),
         headers: {

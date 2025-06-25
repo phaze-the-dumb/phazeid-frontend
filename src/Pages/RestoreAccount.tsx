@@ -17,7 +17,7 @@ let RestoreAccount = () => {
   let [ timeLeft, setTimeLeft ] = createSignal("");
 
   onMount(async () => {
-    let dat = await fetch('http://localhost:8080/api/v1/account/deletion_state', { credentials: 'include' });
+    let dat = await fetch('https://id.api.phaz.uk/api/v1/account/deletion_state', { credentials: 'include' });
     if(dat.status !== 200)return nav('/login');
 
     let json = await dat.json();
@@ -28,7 +28,7 @@ let RestoreAccount = () => {
   })
 
   let restore = async () => {
-    let dat = await fetch('http://localhost:8080/api/v1/account/restore', { credentials: 'include' });
+    let dat = await fetch('https://id.api.phaz.uk/api/v1/account/restore', { credentials: 'include' });
     if(dat.status !== 200)return window.setErrorText(await dat.text());
 
     let json = await dat.json();
