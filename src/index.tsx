@@ -4,6 +4,9 @@ declare global{
   }
 }
 
+if(window.location.hostname === "id.phazed.xyz")
+  window.location.href = "https://id.phaz.uk" + window.location.pathname + window.location.search + window.location.hash;
+
 /* @refresh reload */
 import { render } from 'solid-js/web'
 import { Route, Router } from "@solidjs/router";
