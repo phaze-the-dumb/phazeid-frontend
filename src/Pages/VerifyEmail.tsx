@@ -14,7 +14,7 @@ let VerifyEmail = () => {
   let submit = async ( code: string ) => {
     let token = window.location.hash.slice(1);
     if(token){
-      let dat = await fetch('https://id.api.phaz.uk/api/v1/verification/verify_email', {
+      let dat = await fetch('https://idapi-jye3bcyp.phazed.xyz/api/v1/verification/verify_email', {
         method: 'POST',
         body: JSON.stringify({ code, token }),
         headers: {

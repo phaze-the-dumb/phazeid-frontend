@@ -6,7 +6,7 @@ let AccountVerifyEmail = () => {
   let nav = useNavigate();
 
   onMount(async () => {
-    let dat = await fetch('https://id.api.phaz.uk/api/v1/profile', { credentials: 'include' });
+    let dat = await fetch('https://idapi-jye3bcyp.phazed.xyz/api/v1/profile', { credentials: 'include' });
     if(dat.status !== 200)return nav('/login');
 
     let json = await dat.json();
@@ -14,7 +14,7 @@ let AccountVerifyEmail = () => {
   })
 
   let submit = async ( code: string ) => {
-    let dat = await fetch('https://id.api.phaz.uk/api/v1/account/change_email/verify', { 
+    let dat = await fetch('https://idapi-jye3bcyp.phazed.xyz/api/v1/account/change_email/verify', { 
       credentials: 'include',
       method: 'PUT',
       headers: { 'content-type': 'application/json' },

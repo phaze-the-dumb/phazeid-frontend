@@ -15,7 +15,7 @@ let AccountDevices = () => {
   }
 
   onMount(async () => {
-    let dat = await fetch('https://id.api.phaz.uk/api/v1/account/sessions', { credentials: 'include' });
+    let dat = await fetch('https://idapi-jye3bcyp.phazed.xyz/api/v1/account/sessions', { credentials: 'include' });
     if(dat.status !== 200)return nav('/login');
 
     let json = await dat.json();
@@ -39,7 +39,7 @@ let AccountDevices = () => {
 
           <Show when={!item.is_this}>
             <br /><div class="button-danger" style={{ width: '100%' }} onClick={async () => {
-              let dat = await fetch('https://id.api.phaz.uk/api/v1/account/logout?session=' + item._id, { credentials: 'include' });
+              let dat = await fetch('https://idapi-jye3bcyp.phazed.xyz/api/v1/account/logout?session=' + item._id, { credentials: 'include' });
               if(dat.status !== 200)return window.setErrorText('Failed to revoke session.');
 
               document.querySelector('#session-' + item._id)?.remove();

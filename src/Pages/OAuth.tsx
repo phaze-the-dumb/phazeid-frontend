@@ -26,7 +26,7 @@ let Profile = () => {
   onMount(async () => {
     if(responseType !== "code" && responseType !== "code_skip")return window.setErrorText("Only the \"code\" response type ");
 
-    let dat = await fetch('https://id.api.phaz.uk/api/v1/oauth/app?client_id=' + clientId + '&redirect_uri=' + redirectUri, { credentials: 'include' });
+    let dat = await fetch('https://idapi-jye3bcyp.phazed.xyz/api/v1/oauth/app?client_id=' + clientId + '&redirect_uri=' + redirectUri, { credentials: 'include' });
     if(dat.status !== 200)return nav('/login?redirect_to=' + encodeURIComponent(loc.pathname) + encodeURIComponent(loc.search));
 
     let json = await dat.json();
@@ -46,7 +46,7 @@ let Profile = () => {
   })
 
   let allow = async ( useTurnstile: boolean = true ) => {
-    let dat = await fetch('https://id.api.phaz.uk/api/v1/oauth/authorize?response_type=' + responseType + '&client_id=' + clientId + '&redirect_uri=' + redirectUri + '&scope=' + scope, {
+    let dat = await fetch('https://idapi-jye3bcyp.phazed.xyz/api/v1/oauth/authorize?response_type=' + responseType + '&client_id=' + clientId + '&redirect_uri=' + redirectUri + '&scope=' + scope, {
       credentials: 'include',
       method: 'PUT',
       headers: { 'content-type': 'application/json' },

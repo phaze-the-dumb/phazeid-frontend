@@ -25,7 +25,7 @@ let Login = () => {
   if(typeof loc.query['redirect_to'] == 'string')redirect = loc.query['redirect_to'];
 
   onMount(async () => {
-    let dat = await fetch('https://id.api.phaz.uk/api/v1/profile', { credentials: 'include' });
+    let dat = await fetch('https://idapi-jye3bcyp.phazed.xyz/api/v1/profile', { credentials: 'include' });
     if(dat.status === 200)return nav('/profile');
 
     window.turnstile.render(turnstile!, { sitekey: '0x4AAAAAABDsYHmEqdJLrO8i' });
@@ -58,7 +58,7 @@ let Login = () => {
         loadingContainer!.style.display = 'none';
       } else if(res[0] === "0"){
         // No Error
-        let dat = await fetch('https://id.api.phaz.uk/api/v1/verification?token=' + res.slice(1) + "&next=" + encodeURIComponent(redirect));
+        let dat = await fetch('https://idapi-jye3bcyp.phazed.xyz/api/v1/verification?token=' + res.slice(1) + "&next=" + encodeURIComponent(redirect));
   
         let json = await dat.json();
         nav(json.endpoint + '#' + res.slice(1));

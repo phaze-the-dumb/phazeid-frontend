@@ -5,7 +5,7 @@ let AccountLogout = () => {
   let nav = useNavigate();
 
   onMount(async () => {
-    let dat = await fetch('https://id.api.phaz.uk/api/v1/account/logout', { credentials: 'include' });
+    let dat = await fetch('https://idapi-jye3bcyp.phazed.xyz/api/v1/account/logout', { credentials: 'include' });
     if(dat.status !== 200)return nav('/login');
 
     let json = await dat.json();
