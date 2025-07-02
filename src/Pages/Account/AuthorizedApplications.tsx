@@ -31,7 +31,7 @@ let AccountAuthorizedApplications = () => {
         <br />
         <For each={json.sessions}>
           { ( item ) => <div class="session" id={ 'session-' + item._id }>
-            <h4>{ item.loc.ip } <span class="session-time">{ formatDate(item.created_on * 1_000) }</span></h4>
+            <h4>{ item.app_name } <span class="session-time">{ formatDate(item.created_on * 1_000) }</span></h4>
             <p style={{ 'font-weight': '100', 'color': '#ccc' }}>
               <Show when={item.is_this}>
                 (This Session)<br />
@@ -57,7 +57,7 @@ let AccountAuthorizedApplications = () => {
     <>
       <div class="app-container" style={{ height: '430px' }}>
         <h1>Phaze ID</h1>
-        <h3>Devices</h3>
+        <h3>Authorised Applications</h3>
 
         <div style={{ height: '310px', overflow: 'auto' }} ref={sessionsList}>Loading...</div>
         
