@@ -21,7 +21,7 @@ let Profile = () => {
     }
 
     let json = await dat.json();
-    if(json.endpoint)return nav(json.endpoint);
+    if(json.endpoint)return nav(json.endpoint + '?for_service=' + service);
 
     if(json.patreon_tiers.includes('PATREON'))setPatreonTier(1);
     else if(json.patreon_tiers.includes('VIP_PATREON'))setPatreonTier(2);
@@ -39,7 +39,7 @@ let Profile = () => {
     }
 
     let json = await dat.json();
-    if(json.endpoint)return nav(json.endpoint);
+    if(json.endpoint)return nav(json.endpoint + '?for_service=' + service);
 
     setPatreonLinked(false);
   }
@@ -49,7 +49,7 @@ let Profile = () => {
     if(dat.status !== 200)return nav('/login');
 
     let json = await dat.json();
-    if(json.endpoint)return nav(json.endpoint);
+    if(json.endpoint)return nav(json.endpoint + '?for_service=' + service);
 
     setPatreonLinked(json.patreon_linked);
 
