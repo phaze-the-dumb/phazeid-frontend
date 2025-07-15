@@ -6,7 +6,7 @@ let AccountPatreon = () => {
   let loc = useLocation();
 
   onMount(async () => {
-    let dat = await fetch('https://idapi-jye3bcyp.phazed.xyz/api/v1/patreon/callback?code=' + loc.query['code'], { credentials: 'include' });
+    let dat = await fetch('https://idapi-jye3bcyp.phazed.xyz/api/v1/patreon/callback?code=' + loc.query['code'] + '&state=' + loc.query['state'], { credentials: 'include' });
     if(dat.status !== 200)return nav('/login');
 
     let json = await dat.json();
