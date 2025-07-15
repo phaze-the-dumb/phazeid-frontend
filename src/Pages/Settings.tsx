@@ -61,7 +61,7 @@ let Profile = () => {
           </Show>
 
           <Show when={patreonLinked()} fallback={
-            <div class="patreon-button" onClick={() => window.open('https://idapi-jye3bcyp.phazed.xyz/api/v1/patreon/link')}>Link Patreon Account</div>
+            <div class="patreon-button" onClick={() => window.location.href = 'https://idapi-jye3bcyp.phazed.xyz/api/v1/patreon/link?for_service=' + service}>Link Patreon Account</div>
           }>
             <div>
               <div class="patreon-button" onClick={() => nav('/patreon')}>Patreon Settings</div><br />
