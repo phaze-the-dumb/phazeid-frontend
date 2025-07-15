@@ -1,13 +1,15 @@
 import { useLocation, useNavigate } from "@solidjs/router";
-import { onMount } from "solid-js";
+import { createSignal, onMount } from "solid-js";
 
 let AccountPatreon = () => {
   let nav = useNavigate();
   let loc = useLocation();
 
+  let [ patreonError, setPatreonError ] = createSignal('');
+
   onMount(async () => {
     let dat = await fetch('https://idapi-jye3bcyp.phazed.xyz/api/v1/patreon/callback?code=' + loc.query['code'] + '&state=' + loc.query['state'], { credentials: 'include' });
-    if(dat.status !== 200)return nav('/login');
+    if(dat.status !== 200)return setPatreonError('Error: ' + await dat.text());
 
     let json = await dat.json();
     if(json.endpoint)return nav(json.endpoint);
@@ -21,6 +23,7 @@ let AccountPatreon = () => {
 
         <br />
         <p>Hang On. We're communicating with patreon...</p>
+        <span>{ patreonError() }</span>
       </div>
     </>
   )
