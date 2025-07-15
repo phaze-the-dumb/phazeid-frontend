@@ -1,7 +1,10 @@
-import { useNavigate } from "@solidjs/router";
+import { useLocation, useNavigate } from "@solidjs/router";
 
 let AccountDelete = () => {
   let nav = useNavigate();
+  let loc = useLocation();
+
+  let service = loc.query['for_service'] as string || 'id';
 
   let deleteAccount = async () => {
     let dat = await fetch('https://idapi-jye3bcyp.phazed.xyz/api/v1/account/delete', { method: 'DELETE', credentials: 'include' });
@@ -25,7 +28,7 @@ let AccountDelete = () => {
           It will be deleted in <b>24 HOURS</b> after you submit the deletion request. You can restore the account by logging back in within that time.
         </p><br />
 
-        <div onClick={() => nav('/settings')} class="button" style={{ width: '100%' }}>Back</div>
+        <div onClick={() => nav('/settings?for_service=' + service)} class="button" style={{ width: '100%' }}>Back</div>
         <div onClick={deleteAccount} class="button-danger" style={{ width: '100%', "margin-top": '10px' }}>Delete my account.</div>
       </div>
     </>

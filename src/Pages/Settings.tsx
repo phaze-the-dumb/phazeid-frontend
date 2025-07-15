@@ -1,8 +1,16 @@
-import { useNavigate } from "@solidjs/router";
+import { useLocation, useNavigate } from "@solidjs/router";
 import { createSignal, Match, onMount, Show, Switch } from "solid-js";
+
+let services: any = {
+  'id': '/profile',
+  'vrctools': 'http://dev.test.localhost/settings'
+};
 
 let Profile = () => {
   let nav = useNavigate();
+  let loc = useLocation();
+
+  let service = loc.query['for_service'] as string || 'id';
 
   let [ patreonLinked, setPatreonLinked ] = createSignal(false);
   let [ patreonTier, setPatreonTier ] = createSignal(-1);
@@ -31,22 +39,26 @@ let Profile = () => {
             <div>
               <h4>Security</h4>
             
-              <div class="button" style="width: 100%;" onClick={() => nav('/account/2fa')}>2FA Settings</div><br />
-              <div class="button" style="width: 100%; margin-top: 5px;" onClick={() => nav('/account/devices')}>Authenticated Devices</div><br /><br />
+              <div class="button" style="width: 100%;" onClick={() => nav('/account/2fa?for_service=' + service)}>2FA Settings</div><br />
+              <div class="button" style="width: 100%; margin-top: 5px;" onClick={() => nav('/account/devices?for_service=' + service)}>Authenticated Devices</div><br /><br />
             
               <h4>Profile</h4>
             
-              <div class="button" style="width: 100%;" onClick={() => nav('/account/email')}>Change Email</div><br />
-              <div class="button" style="width: 100%; margin-top: 5px;" onClick={() => nav('/account/username')}>Change Username</div><br />
-              <div class="button" style="width: 100%; margin-top: 5px;" onClick={() => nav('/account/password')}>Change Password</div><br /><br /><br />
+              <div class="button" style="width: 100%;" onClick={() => nav('/account/email?for_service=' + service)}>Change Email</div><br />
+              <div class="button" style="width: 100%; margin-top: 5px;" onClick={() => nav('/account/username?for_service=' + service)}>Change Username</div><br />
+              <div class="button" style="width: 100%; margin-top: 5px;" onClick={() => nav('/account/password?for_service=' + service)}>Change Password</div><br /><br /><br />
 
-              <div class="button-danger" style="width: 100%;" onClick={() => nav('/account/delete')}>Delete Account</div><br />
-              <div class="button-danger" style="width: 100%; margin-top: 5px;" onClick={() => nav('/account/logout')}>Logout</div><br />
+              <div class="button-danger" style="width: 100%;" onClick={() => nav('/account/delete?for_service=' + service)}>Delete Account</div><br />
+              <div class="button-danger" style="width: 100%; margin-top: 5px;" onClick={() => nav('/account/logout?for_service=' + service)}>Logout</div><br />
             </div>
           </div>
           <br />
-        
-          <div class="button" style="width: 100%;" onClick={() => nav('/profile')}>Back</div>
+
+          <Show when={services[service].startsWith('/')} fallback={
+            <div class="button" style="width: 100%;" onClick={() => window.location.href = services[service]}>Back</div>
+          }>
+            <div class="button" style="width: 100%;" onClick={() => nav(services[service])}>Back</div>
+          </Show>
 
           <Show when={patreonLinked()} fallback={
             <div class="patreon-button" onClick={() => window.open('https://idapi-jye3bcyp.phazed.xyz/api/v1/patreon/link')}>Link Patreon Account</div>

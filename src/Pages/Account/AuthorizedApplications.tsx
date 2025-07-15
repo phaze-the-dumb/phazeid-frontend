@@ -1,4 +1,4 @@
-import { useNavigate } from "@solidjs/router";
+import { useLocation, useNavigate } from "@solidjs/router";
 import { For, onMount, Show } from "solid-js";
 
 const DAYS = [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ];
@@ -6,6 +6,9 @@ const MONTH = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 
 let AccountAuthorizedApplications = () => {
   let nav = useNavigate();
+  let loc = useLocation();
+
+  let service = loc.query['for_service'] as string || 'id';
 
   let sessionsList!: HTMLDivElement;
 
@@ -19,7 +22,7 @@ let AccountAuthorizedApplications = () => {
     if(dat.status !== 200)return nav('/login');
 
     let json = await dat.json();
-    if(json.endpoint)return nav(json.endpoint);
+    if(json.endpoint)return nav(json.endpoint + '?for_service=' + service);
 
     json.sessions.reverse();
 
@@ -45,7 +48,7 @@ let AccountAuthorizedApplications = () => {
               document.querySelector('#session-' + item._id)?.remove();
             }}>Revoke Session</div>
 
-            <br /><div class="button-danger" style={{ width: '100%', "margin-top": '5px' }} onClick={() => nav('/account/deauthorize?id=' + item._id + '&app_name=' + item.app_name)}>Remove App</div>
+            <br /><div class="button-danger" style={{ width: '100%', "margin-top": '5px' }} onClick={() => nav('/account/deauthorize?id=' + item._id + '&app_name=' + item.app_name + '&for_service=' + service)}>Remove App</div>
           </div>}
         </For>
         <br />
@@ -61,7 +64,7 @@ let AccountAuthorizedApplications = () => {
 
         <div style={{ height: '310px', overflow: 'auto' }} ref={sessionsList}>Loading...</div>
         
-        <div class="button" style="width: 100%;" onClick={() => nav('/account/devices')}>Back</div>
+        <div class="button" style="width: 100%;" onClick={() => nav('/account/devices?for_service=' + service)}>Back</div>
       </div>
     </>
   )

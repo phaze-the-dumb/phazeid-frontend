@@ -1,8 +1,11 @@
-import { useNavigate } from "@solidjs/router";
+import { useLocation, useNavigate } from "@solidjs/router";
 import { createSignal, Match, onMount, Show, Switch } from "solid-js";
 
 let Profile = () => {
   let nav = useNavigate();
+  let loc = useLocation();
+
+  let service = loc.query['for_service'] as string || 'id';
 
   let [ patreonLinked, setPatreonLinked ] = createSignal(false);
   let [ patreonTier, setPatreonTier ] = createSignal(-1);
@@ -63,7 +66,7 @@ let Profile = () => {
 
           <div>
             <Show when={patreonLinked()} fallback={
-              <div class="patreon-button" onClick={() => window.open('https://idapi-jye3bcyp.phazed.xyz/api/v1/patreon/link')}>Link Patreon Account</div>
+              <div class="patreon-button" onClick={() => window.location.href = 'https://idapi-jye3bcyp.phazed.xyz/api/v1/patreon/link?state=?for_service=' + service}>Link Patreon Account</div>
             }>
               <div>
                 <div class="button" style="width: 100%;" onClick={refreshPatreon}>Refresh Patreon Account</div>
@@ -87,7 +90,7 @@ let Profile = () => {
             </Show>
           </div><br /><br />
 
-          <div class="button" style="width: 100%;" onClick={() => nav('/profile')}>Back</div>
+          <div class="button" style="width: 100%;" onClick={() => nav('/settings?for_service=' + service)}>Back</div>
         </div>
       </div>
     </>

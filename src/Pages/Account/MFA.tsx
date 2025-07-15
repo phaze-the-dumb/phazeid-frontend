@@ -1,9 +1,13 @@
-import { useNavigate } from "@solidjs/router";
+import { useLocation, useNavigate } from "@solidjs/router";
 import { createSignal, onMount } from "solid-js";
 import CodeInput from "../../Components/CodeInput";
 
 let AccountMFA = () => {
   let nav = useNavigate();
+  let loc = useLocation();
+
+  let service = loc.query['for_service'] as string || 'id';
+
   let [ txtCode, setTxtCode ] = createSignal('');
 
   let qrCode!: HTMLDivElement;
@@ -116,7 +120,7 @@ let AccountMFA = () => {
           <p>2FA is enabled.</p><br />
 
           <div class="button-danger" style={{ width: '100%' }} onClick={disable}>Disable 2FA</div>
-          <div class="button" style={{ width: '100%', 'margin-top': '7px' }} onClick={() => nav('/settings')}>Back</div>
+          <div class="button" style={{ width: '100%', 'margin-top': '7px' }} onClick={() => nav('/settings?for_service=' + service)}>Back</div>
         </div>
       </div>
     </>

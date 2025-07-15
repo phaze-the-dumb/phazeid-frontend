@@ -1,4 +1,4 @@
-import { useNavigate } from "@solidjs/router";
+import { useLocation, useNavigate } from "@solidjs/router";
 import { onMount } from "solid-js";
 import { Encryptable, PlainText, tunnel } from "../../util/auth";
 
@@ -17,6 +17,9 @@ let AccountChangePassword = () => {
   let confirmOldPassword: HTMLInputElement;
 
   let nav = useNavigate();
+  let loc = useLocation();
+
+  let service = loc.query['for_service'] as string || 'id';
 
   onMount(async () => {
     let dat = await fetch('https://idapi-jye3bcyp.phazed.xyz/api/v1/profile', { credentials: 'include' });
@@ -47,7 +50,7 @@ let AccountChangePassword = () => {
         // No Error
 
         window.setErrorText("");
-        nav('/settings');
+        nav('/settings?for_service=' + service);
       }
     });
   }
@@ -93,7 +96,7 @@ let AccountChangePassword = () => {
         <div ref={( el ) => turnstile = el}></div><br />
 
         <div class="button" style={{ width: '100%' }} onClick={submit}>Save</div><br />
-        <div class="button" style={{ width: '100%', 'margin-top': '7px' }} onClick={() => { window.setErrorText(""); nav('/settings') }}>Cancel</div>
+        <div class="button" style={{ width: '100%', 'margin-top': '7px' }} onClick={() => { window.setErrorText(""); nav('/settings?for_service=' + service) }}>Cancel</div>
       </div>
     </>
   )
