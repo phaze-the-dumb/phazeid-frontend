@@ -44,7 +44,7 @@ let AccountMFA = () => {
     mfaSlide2.style.display = 'none';
 
     let dat = await fetch('https://idapi-jye3bcyp.phazed.xyz/api/v1/account/confirm_mfa', { 
-      credentials: 'include',
+      credentials: 'include', 
       body: JSON.stringify({ code }), 
       method: 'PUT',
       headers: {
@@ -98,7 +98,7 @@ let AccountMFA = () => {
 
   return (
     <>
-      <div class="app-container" ref={appContainer} style={{ height: '470px' }}>
+      <div class="app-container" ref={appContainer} style={{ height: '485px' }}>
         <h1>Phaze ID</h1>
         <h3>Enable 2FA</h3><br />
 
