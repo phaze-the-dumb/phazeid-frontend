@@ -17,13 +17,15 @@ let AccountPatreon = () => {
 
   return (
     <>
-      <div class="app-container" style={{ height: '160px' }}>
+      <div class="app-container" style={{ height: '200px' }}>
         <h1>Phaze ID</h1>
         <h3>Connecting...</h3><br />
 
         <br />
         <p>Hang On. We're communicating with patreon...</p>
         <span>{ patreonError() }</span>
+
+        <div class="button" style={{ width: '100%', "margin-top": '5px' }} onClick={() => nav('/settings' + loc.query['state'])}>Back</div>
       </div>
     </>
   )
