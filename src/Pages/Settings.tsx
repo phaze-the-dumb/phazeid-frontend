@@ -7,24 +7,6 @@ let Profile = () => {
   let [ patreonLinked, setPatreonLinked ] = createSignal(false);
   let [ patreonTier, setPatreonTier ] = createSignal(-1);
 
-  let refreshPatreon = async () => {
-    let prevTier = patreonTier();
-    setPatreonTier(-1);
-
-    let dat = await fetch('https://idapi-jye3bcyp.phazed.xyz/api/v1/patreon/refresh', { credentials: 'include' });
-    if(dat.status !== 200){
-      setPatreonTier(prevTier);
-      return window.setErrorText("Error refreshing patreon data: " + await dat.text());
-    }
-
-    let json = await dat.json();
-    if(json.endpoint)return nav(json.endpoint);
-
-    if(json.patreon_tiers.includes('PATREON'))setPatreonTier(1);
-    else if(json.patreon_tiers.includes('VIP_PATREON'))setPatreonTier(2);
-    else setPatreonTier(0);
-  }
-
   onMount(async () => {
     let dat = await fetch('https://idapi-jye3bcyp.phazed.xyz/api/v1/profile', { credentials: 'include' });
     if(dat.status !== 200)return nav('/login');
@@ -70,7 +52,7 @@ let Profile = () => {
             <div class="patreon-button" onClick={() => window.open('https://idapi-jye3bcyp.phazed.xyz/api/v1/patreon/link')}>Link Patreon Account</div>
           }>
             <div>
-              <div class="patreon-button" onClick={refreshPatreon}>Refresh Patreon Account</div><br />
+              <div class="patreon-button" onClick={() => nav('/patreon')}>Patreon Settings</div><br />
 
               <Switch>
                 <Match when={patreonTier() === -1}>

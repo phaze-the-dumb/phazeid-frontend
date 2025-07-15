@@ -1,5 +1,5 @@
 import { useIsRouting } from "@solidjs/router";
-import { createEffect, createSignal, onMount, ParentProps, Show } from "solid-js";
+import { createEffect, createSignal, ParentProps, Show } from "solid-js";
 import { Motion, Presence } from "solid-motionone";
 
 let App = ( props: ParentProps ) => {
@@ -17,10 +17,6 @@ let App = ( props: ParentProps ) => {
       }, 5_000)
     }
   })
-
-  onMount(() => {
-    
-  });
 
   return (
     <>

@@ -28,6 +28,7 @@ let VerifyBackup = lazy(() => import('./Pages/VerifyBackup.tsx'));
 let Verify = lazy(() => import('./Pages/Verify.tsx'));
 let Profile = lazy(() => import('./Pages/Profile.tsx'));
 let Settings = lazy(() => import('./Pages/Settings.tsx'));
+let Patreon = lazy(() => import('./Pages/Patreon.tsx'));
 let OAuth = lazy(() => import('./Pages/OAuth.tsx'));
 let RestoreAccount = lazy(() => import('./Pages/RestoreAccount.tsx'));
 
@@ -56,6 +57,7 @@ render(() => <Router root={App}>
   <Route path="/verify" component={Verify} />
   <Route path="/profile" component={Profile} />
   <Route path="/settings" component={Settings} />
+  <Route path="/patreon" component={Patreon} />
   <Route path="/oauth" component={OAuth} />
   <Route path="/restore-account" component={RestoreAccount} />
 
