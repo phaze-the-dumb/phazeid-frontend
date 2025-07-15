@@ -44,7 +44,7 @@ let AccountMFA = () => {
     mfaSlide2.style.display = 'none';
 
     let dat = await fetch('https://idapi-jye3bcyp.phazed.xyz/api/v1/account/confirm_mfa', { 
-      credentials: 'include', 
+      credentials: 'include',
       body: JSON.stringify({ code }), 
       method: 'PUT',
       headers: {
@@ -89,16 +89,16 @@ let AccountMFA = () => {
   let disable = async () => {
     let dat = await fetch('https://idapi-jye3bcyp.phazed.xyz/api/v1/account/disable_mfa', { credentials: 'include', method: 'DELETE' });
     if(dat.status !== 200)return window.setErrorText('Cannot disable 2FA : ' + await dat.text());
-    
+
     mfaSlide1.style.display = 'block';
     mfaSlide2.style.display = 'none';
-    
+
     nav('/settings');
   }
 
   return (
     <>
-      <div class="app-container" ref={appContainer} style={{ height: '450px' }}>
+      <div class="app-container" ref={appContainer} style={{ height: '470px' }}>
         <h1>Phaze ID</h1>
         <h3>Enable 2FA</h3><br />
 
@@ -110,6 +110,8 @@ let AccountMFA = () => {
 
           <p>Enter the code displayed in your authenticator app here.</p><br />
           <CodeInput onChange={submit} />
+
+          <div class="button" style={{ width: '100%', "margin-top": '7px' }} onClick={() => nav('/settings?for_service=' + service)}>Back</div>
         </div>
 
         <div ref={mfaLoading} style={{ display: 'none' }}>
