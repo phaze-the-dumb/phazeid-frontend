@@ -64,7 +64,7 @@ let Profile = () => {
             <div class="patreon-button" onClick={() => window.location.href = 'https://idapi-jye3bcyp.phazed.xyz/api/v1/patreon/link?state=?for_service=' + service}>Link Patreon Account</div>
           }>
             <div>
-              <div class="patreon-button" onClick={() => nav('/patreon')}>Patreon Settings</div><br />
+              <div class="patreon-button" onClick={() => nav('/patreon?for_service=' + service)}>Patreon Settings</div><br />
 
               <Switch>
                 <Match when={patreonTier() === -1}>
