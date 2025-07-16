@@ -79,7 +79,7 @@ let Login = () => {
             <input class="input-text" type="text" placeholder="Enter Username..." ref={username!} onKeyUp={(e) => e.key === 'Enter' ? login() : null}></input>
             <div class="input-underline"></div>
           </div><br /><br />
-          
+
           <div class="input">
             <input class="input-text" type="password" placeholder="Enter Password..." ref={password!} onKeyUp={(e) => e.key === 'Enter' ? login() : null}></input>
             <div class="input-underline"></div>

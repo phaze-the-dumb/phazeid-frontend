@@ -44,6 +44,8 @@ let AccountDelete = lazy(() => import('./Pages/Account/Delete.tsx'));
 let AccountDeauthorize = lazy(() => import('./Pages/Account/Deauthorize.tsx'));
 let AccountPatreon = lazy(() => import('./Pages/Account/Patreon.tsx'));
 
+let EmailInfo = lazy(() => import('./Pages/EmailInfo.tsx'));
+
 render(() => <Router root={App}>
   <Route path="/" component={Login} />
 
@@ -72,4 +74,6 @@ render(() => <Router root={App}>
   <Route path="/account/delete" component={AccountDelete} />
   <Route path="/account/deauthorize" component={AccountDeauthorize} />
   <Route path="/account/patreon" component={AccountPatreon} />
+
+  <Route path="/email-info" component={EmailInfo} />
 </Router>, root!)
