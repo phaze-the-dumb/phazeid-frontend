@@ -36,7 +36,7 @@ let VerifyEmail = () => {
 
   return (
     <>
-      <div class="app-container" style={{ height: '220px' }}>
+      <div class="app-container">
         <h1>Phaze ID</h1>
         <h3>Verify Email</h3><br />
 

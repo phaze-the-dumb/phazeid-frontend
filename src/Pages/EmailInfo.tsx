@@ -1,7 +1,7 @@
 let EmailInfo = () => {
    return (
     <>
-      <div class="app-container" style={{ height: '320px' }}>
+      <div class="app-container">
         <h1>Email Info</h1>
 
         <p>

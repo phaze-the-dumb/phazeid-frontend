@@ -56,7 +56,7 @@ let AccountDevices = () => {
 
   return (
     <>
-      <div class="app-container" style={{ height: '473px' }}>
+      <div class="app-container">
         <h1>Phaze ID</h1>
         <h3>Devices</h3>
 

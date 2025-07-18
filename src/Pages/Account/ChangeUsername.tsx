@@ -47,7 +47,7 @@ let AccountChangeUsername = () => {
 
   return (
     <>
-      <div class="app-container" style={{ height: '275px' }}>
+      <div class="app-container">
         <h4>Change Username</h4>
 
         <div class="input" style={{ 'margin-top': '5px'}}>

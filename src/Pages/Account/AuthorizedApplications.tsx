@@ -58,7 +58,7 @@ let AccountAuthorizedApplications = () => {
 
   return (
     <>
-      <div class="app-container" style={{ height: '430px' }}>
+      <div class="app-container">
         <h1>Phaze ID</h1>
         <h3>Authorised Applications</h3>
 

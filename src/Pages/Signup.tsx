@@ -51,7 +51,7 @@ let Signup = () => {
 
   return (
     <>
-      <div class="app-container" style={{ height: '540px' }}>
+      <div class="app-container">
         <h1>Phaze ID</h1><br />
         <h3>Sign Up</h3><br />
 

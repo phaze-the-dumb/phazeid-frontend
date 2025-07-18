@@ -36,7 +36,7 @@ let AccountVerifyEmail = () => {
 
   return (
     <>
-      <div class="app-container" style={{ height: '203px' }}>
+      <div class="app-container">
         <h4>Verify Email</h4>
 
         <CodeInput onChange={submit} />

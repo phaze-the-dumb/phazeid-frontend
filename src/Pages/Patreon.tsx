@@ -60,7 +60,7 @@ let Profile = () => {
 
   return (
     <>
-      <div class="app-container" style={{ height: '250px' }}>
+      <div class="app-container">
         <div>
           <h2>Patreon</h2><br />
 

@@ -39,7 +39,7 @@ let RestoreAccount = () => {
 
   return (
     <>
-      <div class="app-container" style={{ height: '215px' }}>
+      <div class="app-container">
         <h2>Welcome Back!</h2>
         <p>Your account has been flagged for deletion and will be deleted in { timeLeft() }</p>
 

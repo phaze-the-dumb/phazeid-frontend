@@ -71,7 +71,7 @@ let Profile = () => {
   let deny = () => window.location.href = (redirectUri + '?error=access_denied&state=' + state);
 
   return (
-    <div class="app-container" style={{ height: '500px' }}>
+    <div class="app-container">
       <h1>Phaze ID</h1>
       <h3>OAuth</h3>
 

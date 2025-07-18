@@ -43,7 +43,7 @@ let Verify = () => {
 
   return (
     <>
-      <div class="app-container" style={{ height: '240px' }}>
+      <div class="app-container">
         <h1>Phaze ID</h1>
         <h3>Verify Backup Code</h3><br />
 

@@ -28,8 +28,6 @@ let AccountMFA = () => {
     if(json.is_enabled){
       mfaSlide1.style.display = 'none';
       mfaSlide2.style.display = 'block';
-
-      appContainer.style.height = '225px';
     } else{
       qrImage.src = 'data:image/png;base64,' + json.qr.Ok;
       qrImage.style.display = 'block';
@@ -65,7 +63,6 @@ let AccountMFA = () => {
     mfaLoading.style.display = 'none';
     mfaSlide2.style.display = 'block';
 
-    appContainer.style.height = '460px';
     appContainer.appendChild(<div>
       <br />
       <p>These are your MFA backup codes, these will never be shown again. Write them down in a safe place incase you lose your account.<br /><br />Once you use a code it will become invalid.</p>
@@ -98,7 +95,7 @@ let AccountMFA = () => {
 
   return (
     <>
-      <div class="app-container" ref={appContainer} style={{ height: '485px' }}>
+      <div class="app-container" ref={appContainer}>
         <h1>Phaze ID</h1>
         <h3>Enable 2FA</h3><br />
 

@@ -16,7 +16,7 @@ let AccountDelete = () => {
 
   return (
     <>
-      <div class="app-container" style={{ height: '360px' }}>
+      <div class="app-container">
         <h1>Phaze ID</h1>
         <h3>Account Deletion</h3><br />
 

@@ -88,7 +88,7 @@ let Profile = () => {
 
   return (
     <>
-      <div class="app-container" style={{ height: '260px' }}>
+      <div class="app-container">
         <h2 ref={headingText!}>Welcome Back</h2><br />
 
         <div>

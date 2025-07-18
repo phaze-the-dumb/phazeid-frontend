@@ -57,7 +57,7 @@ let AccountChangePassword = () => {
 
   return (
     <>
-      <div class="app-container" style={{ height: '380px' }}>
+      <div class="app-container">
         <h4>Change Password</h4>
 
         <div class="input" style={{ 'margin-top': '5px'}}>

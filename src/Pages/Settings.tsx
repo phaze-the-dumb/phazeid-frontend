@@ -31,7 +31,7 @@ let Profile = () => {
 
   return (
     <>
-      <div class="app-container" style={{ height: '515px' }}>
+      <div class="app-container">
         <div>
           <h2>Settings</h2><br />
 

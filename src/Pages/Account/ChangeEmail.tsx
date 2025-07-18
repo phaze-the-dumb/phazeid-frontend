@@ -47,7 +47,7 @@ let AccountChangeEmail = () => {
 
   return (
     <>
-      <div class="app-container" style={{ height: '275px' }}>
+      <div class="app-container">
         <h4>Change Email</h4>
 
         <div class="input" style={{ 'margin-top': '5px'}}>

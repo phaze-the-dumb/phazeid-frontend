@@ -53,7 +53,7 @@ let Reset = () => {
 
   return (
     <>
-      <div class="app-container" style={{ height: '360px' }}>
+      <div class="app-container">
         <h1>Phaze ID</h1><br />
         <h3>Reset Password</h3><br />
 
