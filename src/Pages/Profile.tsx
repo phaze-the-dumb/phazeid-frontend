@@ -103,7 +103,7 @@ let Profile = () => {
           <div class="username" ref={username!}></div>
         </div><br />
 
-        <div style={{ "text-align": 'right', "margin-top": '-200px' }}>
+        <div style={{ "text-align": 'right', "margin-top": '-200px', "margin-bottom": '150px' }}>
           <div class="button" style={{ padding: '10px' }} onClick={() => nav('/settings')}><i class="fa-solid fa-gear"></i></div>
         </div>
       </div>
