@@ -80,18 +80,19 @@ let Profile = () => {
           <div><br />
             <p>{ appName() } would like to be able to:</p>
 
-            <For each={scopes()}>
-              {( scope: string ) => scope ? (
-                <div style={{ display: 'flex', "justify-content": 'center', "align-items": 'center', "margin": '20px 0' }}>
-                  <i style={{ "font-size": '25px' }} class="fa-solid fa-circle-check"></i>
-                  <div style={{ "margin-left": '10px' }}></div>
-                  <div>{scope}</div>
-                </div>
-              ) : ( <></> )}
-            </For>
+            <div style={{ height: '300px' }}>
+              <For each={scopes()}>
+                {( scope: string ) => scope ? (
+                  <div style={{ display: 'flex', "justify-content": 'center', "align-items": 'center', "margin": '20px 0' }}>
+                    <i style={{ "font-size": '25px' }} class="fa-solid fa-circle-check"></i>
+                    <div style={{ "margin-left": '10px' }}></div>
+                    <div>{scope}</div>
+                  </div>
+                ) : ( <></> )}
+              </For>
+            </div>
 
-
-            <div style={{ position: 'absolute', bottom: '10px', width: 'calc(100% - 20px)' }}>
+            <div>
               <div ref={turnstile}></div>
 
               <div class="button" style={{ width: '100%', 'margin-top': '7px' }} onClick={() => allow()}>Allow</div>
